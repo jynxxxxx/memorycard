@@ -7,14 +7,20 @@ function App() {
 
   return (
     <>
-      <div className='title'>
-        Pokemon Memory Game
-      </div>
-      <div className='rules'>
-        Click one Pokemon and continue to find it every shuffle
-      </div>
-      <div>
-        <GamePlay></GamePlay>
+      <div className='masterctn'>
+          <div className='title'>
+            <div className='logoctn'>
+              <img className='logo' src='./logo.png' alt='Pokemon Logo' />
+            </div>
+            <div className='titletext'>Memory Game</div>
+          </div>
+          <div className='rules'>
+            Try to click all of the cards once!
+          </div>
+      
+        <div className='mainctn'>
+          <GamePlay></GamePlay>
+        </div>
       </div>
     </>
   );

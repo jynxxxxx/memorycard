@@ -1,5 +1,9 @@
+import { useState } from 'react';
 
-export default function PokemonAPI( { setPokemonData }) {
+export default function PokemonAPI({ setPokemonData }) {
+  const [loading, setLoading] = useState(false);
+  const [dataLoaded, setDataLoaded] = useState(false);
+
   async function getPokemon(dex) {
     try {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${dex}`);
@@ -35,24 +39,33 @@ export default function PokemonAPI( { setPokemonData }) {
   const randomDexes = getRandomDexes(min, max, numberOfPokemon);
 
   const handleFetchPokemon = async () => {
-    const allPokemon = randomDexes.map((dex) => getPokemon(dex));
-    const initialPokemonData = await Promise.all(allPokemon);
+    setLoading(true); // Set loading to true when fetching data
 
+    try {
+      const allPokemon = randomDexes.map((dex) => getPokemon(dex));
+      const initialPokemonData = await Promise.all(allPokemon);
 
+      const capitalizedPokemonData = initialPokemonData.map((pokemon) => ({
+        ...pokemon,
+        name: pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1),
+      }));
 
-    const capitalizedPokemonData = initialPokemonData.map((pokemon) => ({
-      ...pokemon,
-      name: pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
-    }));
-
-    setPokemonData(capitalizedPokemonData);
-  }
+      setPokemonData(capitalizedPokemonData);
+    } catch (error) {
+      console.error('Error:', error);
+    } finally {
+      setLoading(false);
+      setDataLoaded(true)
+    }
+  };
 
   return (
-    <div>
-      <button type="button" onClick={handleFetchPokemon}>
-        Start Game
-      </button>
+    <div className='buttonctn'>
+      {!loading && !dataLoaded && ( // Render the button only when not loading
+        <button className="startbtn" type="button" onClick={handleFetchPokemon}>
+          Start Game
+        </button>
+      )}
     </div>
   )
 }

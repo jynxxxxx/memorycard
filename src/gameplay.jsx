@@ -22,20 +22,25 @@ export default function GamePlay() {
     setPokemonData(shuffledArray);
   };
 
+  const gameReset = () => {
+    setCounter(0);
+    setClickedCards([]);
+  }
+
+  const gameWin = () => {
+    setCounter(0);
+    setClickedCards([]);
+  }
 
   function checkCard(e) {
     const targetCard = e.target.closest('.card').getAttribute('data-key');
-
-    console.log(`clicked: ${ targetCard}`)
-    console.log(pokemonData)
-    console.log(e.target)
-    console.log(clickedCards)
   
     if (clickedCards.includes( targetCard)) {
       console.log('You Lose');
-      setCounter(0);
-      handleShuffle();
-      setClickedCards([]);
+      gameReset()
+    } 
+    if(clickedCards.length === 10) {
+      gameWin()
     } else {
       setCounter(count => count + 1)
       setClickedCards([...clickedCards,targetCard])
@@ -45,16 +50,20 @@ export default function GamePlay() {
   }
 
   return (
-    <div>
-      <PokemonAPI pokemonData={pokemonData} setPokemonData={setPokemonData}></PokemonAPI>
+    <>
+      <PokemonAPI pokemonData={pokemonData} setPokemonData={setPokemonData} ></PokemonAPI>
       <div className='cardctn'>
         {Object.values(pokemonData).map((pokemon) => (
           <div key={uuidv4()} data-key={pokemon.name} className='card'  onClick={checkCard}>
-            <img className='pokemonimg' src={pokemon.image} alt={pokemon.name} />
-            <div className='name'>{pokemon.name}</div>
+            <div className='imagectn'>
+              <img className='pokemonimg' src={pokemon.image} alt={pokemon.name} />
+            </div>
+            <div className='namectn'>
+              <div className='name'>{pokemon.name}</div>
+            </div>
           </div>
         ))}
       </div>
-    </div>
+    </>
   )
 }
