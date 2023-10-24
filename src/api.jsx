@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import GamePlay from './gameplay'
 
-export default function PokemonAPI({ setPokemonData }) {
+
+export default function PokemonAPI() {
+  const [pokemonData, setPokemonData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [dataLoaded, setDataLoaded] = useState(false);
 
@@ -60,12 +63,15 @@ export default function PokemonAPI({ setPokemonData }) {
   };
 
   return (
-    <div className='buttonctn'>
-      {!loading && !dataLoaded && ( // Render the button only when not loading
-        <button className="startbtn" type="button" onClick={handleFetchPokemon}>
-          Start Game
-        </button>
-      )}
-    </div>
+    <>
+      <div className='buttonctn'>
+        {!loading && !dataLoaded && ( // Render the button only when not loading
+          <button className="startbtn" type="button" onClick={handleFetchPokemon}>
+            Start Game
+          </button>
+        )}
+      </div>
+      <GamePlay pokemonData={pokemonData} setPokemonData={setPokemonData} handleFetchPokemon={handleFetchPokemon} loading={loading}></GamePlay>
+    </>
   )
 }

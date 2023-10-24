@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import GamePlay from './gameplay'
+// import GamePlay from './gameplay'
+import PokemonAPI from './api'
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
           </div>
       
         <div className='mainctn'>
-          <GamePlay></GamePlay>
+          <PokemonAPI></PokemonAPI>
         </div>
       </div>
     </>

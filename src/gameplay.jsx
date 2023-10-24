@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import PokemonAPI from './api'
 import { v4 as uuidv4 } from 'uuid';
 
 
-export default function GamePlay() {
-  const [pokemonData, setPokemonData] = useState([]);
-  const [counter, setCounter] = useState(0);
+export default function GamePlay({ pokemonData, setPokemonData, handleFetchPokemon, loading }) {
+  const [counter, setCounter] = useState(1);
   const [clickedCards, setClickedCards] = useState([]);
+  const [gameEnd, setGameEnd] = useState('');
 
   function shuffleCards(pokemonData) {
     const shuffledArray = [...pokemonData];
@@ -25,33 +24,34 @@ export default function GamePlay() {
   const gameReset = () => {
     setCounter(0);
     setClickedCards([]);
+    handleFetchPokemon();
+    setGameEnd('');
   }
 
-  const gameWin = () => {
-    setCounter(0);
-    setClickedCards([]);
-  }
-
+  let losingCard = clickedCards.slice(-1)
+  
   function checkCard(e) {
     const targetCard = e.target.closest('.card').getAttribute('data-key');
+    console.log(targetCard)
+    console.log(losingCard)
   
     if (clickedCards.includes( targetCard)) {
       console.log('You Lose');
-      gameReset()
+      setGameEnd('lost')
     } 
-    if(clickedCards.length === 10) {
-      gameWin()
+    if(counter === 10) {
+      setGameEnd('won')
     } else {
       setCounter(count => count + 1)
       setClickedCards([...clickedCards,targetCard])
       console.log(`WinStreak: ${counter}`);
       handleShuffle();
+      console.log(clickedCards)
     }
   }
 
   return (
     <>
-      <PokemonAPI pokemonData={pokemonData} setPokemonData={setPokemonData} ></PokemonAPI>
       <div className='cardctn'>
         {Object.values(pokemonData).map((pokemon) => (
           <div key={uuidv4()} data-key={pokemon.name} className='card'  onClick={checkCard}>
@@ -63,6 +63,32 @@ export default function GamePlay() {
             </div>
           </div>
         ))}
+        {loading ? (
+            <div className='loading'>
+              LOADING...
+              <img className='pokeball' src='../public/pokeball.svg' alt='pokeball' />
+            </div>
+          ) : null}
+        {gameEnd === 'lost' ? (
+          <div className='gameEnd'>
+            <div className='result'> You already clicked {losingCard}</div>
+            <div className="resultbtn">
+              <button className="startbtn" type="button" onClick={gameReset}>
+                Try Again?
+              </button>
+            </div>
+          </div>
+        ) : null}
+        {gameEnd === 'won' ? (
+          <div className='gameEnd'>
+            <div className='result'> You got them all! </div>
+            <div className="resultbtn">
+              <button className="startbtn" type="button" onClick={gameReset}>
+                Play Again?
+              </button>
+            </div>
+          </div>
+        ) : null}
       </div>
     </>
   )
