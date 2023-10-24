@@ -66,7 +66,7 @@ export default function GamePlay({ pokemonData, setPokemonData, handleFetchPokem
         {loading ? (
             <div className='loading'>
               LOADING...
-              <img className='pokeball' src='../public/pokeball.svg' alt='pokeball' />
+              <img className='pokeball' src='./pokeball.svg' alt='pokeball' />
             </div>
           ) : null}
         {gameEnd === 'lost' ? (
