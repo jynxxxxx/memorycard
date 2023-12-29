@@ -1,6 +1,6 @@
-# FindMe
+# Pokemon Memory Card Game
 
-Welcome to the FindMe, the photo tagging app project! This project is clone of "Where's Waldo". 
+Welcome to the React Memory Card Game project! This application is designed to showcase the implementation of React concepts, specifically focusing on managing state with hooks, fetching data from an external API, and creating an interactive memory card game.
 
 
 ## Table of Contents 
@@ -12,18 +12,12 @@ Welcome to the FindMe, the photo tagging app project! This project is clone of "
 - [Attributions](#attributions)
 
 ## General Info
-Users can click on the photo to place box around their target and choose a character from the dropdown list. The backend validates the user's selection, and if correct, places a marker on the photo. The app keeps track of the time taken by the user to identify all characters and prompts them to enter their name for the high scores table.
+The main goal of this project is to leverage React and its hooks to build a captivating memory card game. The cards are displayed in a random order each time a user clicks one, creating an engaging and challenging experience.
 
 ## Features
-- **Interactive Photo Tagging**: Users can click on the photo to place a targeting box and select a character from the dropdown list.
+- **Memory Card Game**: Test your memory skills by clicking on cards and revealing images. The game provides a fun and interactive way to challenge yourself.
 
-- **Backend Validation**: The app communicates with the backend to validate whether the selected character is within the targeting box.
-
-- **Marker Placement**: If the user's selection is correct, a marker is placed on the photo to indicate the character's location.
-
-- **Timer**: The app records the time taken by the user from when the photo is first loaded to successfully identifying all characters.
-
-- **High Scores Table**: Users are prompted to enter their name for the high scores table if they successfully complete a round.
+- **Random Card Order**: The cards are shuffled and displayed in a random order each time a user clicks one, adding an element of unpredictability to the game.
 
 ## Languages and Tools
 <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a><a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a><a href="https://reactjs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/> </a> <a href="https://vitejs.dev/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/vitejs/vite/main/docs/public/logo.svg" alt="Vite" width="40" height="40"/></a>
