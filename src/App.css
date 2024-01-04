@@ -1,45 +1,46 @@
-:root{
+:root {
   --titlefont: 'Grandstander', cursive;
   --namefont: 'Pixelify Sans', sans-serif;
-  background-image:url("../public/background.jpg");
+  background-image: url("../public/background.jpg");
   background-size: cover;
-}   
+}
 
-.masterctn{
+.masterctn {
   display: grid;
   grid-template-rows: 20vh 7vh 1fr;
   height: 100vh;
   width: 100vw;
 }
 
-.title{
+.title {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 16px;;
+  padding-top: 16px;
+  ;
 }
 
-.titletext{
+.titletext {
   font-family: 'Grandstander', cursive;
   font-weight: 900;
   color: #FECB05;
-  font-size: 6rem;
-  letter-spacing: 1.5rem;
-  -webkit-text-stroke-width: 0.3rem;
+  font-size: 3rem;
+  -webkit-text-stroke-width: 0.2rem;
   -webkit-text-stroke-color: #3860AA;
   z-index: 1;
   margin-top: -2%;
 }
 
-.rules{
+.rules {
   font-family: var(--titlefont);
   text-align: center;
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  padding-top: 0.5rem;
 }
 
-.startbtn{
+.startbtn {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -49,13 +50,12 @@
   font-size: 2rem;
 }
 
-.logo{
-  height: 125px;
-  width: 470px;
+.logo {
+  width: 15rem;
   margin-left: -5%;
 }
 
-.mainctn{
+.mainctn {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -66,14 +66,14 @@
   background-position: bottom;
 }
 
-.buttonctn{
+.buttonctn {
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1;
 }
 
-.cardctn{
+.cardctn {
   width: 68vw;
   height: 53vh;
   display: grid;
@@ -83,7 +83,7 @@
   margin-top: -2.3%;
 }
 
-.card{
+.card {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -92,7 +92,7 @@
   border-radius: 12px;
 }
 
-.imagectn{
+.imagectn {
   height: 70%;
   width: 100%;
   background-image: url('../public/battle.png');
@@ -108,7 +108,7 @@
 }
 
 
-.namectn{
+.namectn {
   height: 30%;
   width: 100%;
   background-image: url('../public/textbox.png');
@@ -119,12 +119,13 @@
   border-radius: 0 0 12px 12px;
 }
 
-.name{
+.name {
   font-family: var(--namefont);
   font-size: 1.5rem;
 }
 
-.gameEnd, .loading{
+.gameEnd,
+.loading {
   position: fixed;
   left: 0;
   top: 0;
@@ -139,7 +140,7 @@
   gap: 5%;
 }
 
-.loading{
+.loading {
   font-family: var(--namefont);
   text-align: center;
   font-weight: 600;
@@ -162,8 +163,13 @@ button:hover {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .pokeball {
